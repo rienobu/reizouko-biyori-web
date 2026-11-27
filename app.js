@@ -40,7 +40,7 @@ function setNativePhotoBusy(busy){
 function photoSource(item){return item.photoFile?(globalThis.FridgePhotoUrls?.[item.photoFile.path]||item.photo||null):item.photo;}
 function finishFoodRegistration(item){
  return persistFoodMutation(next=>{if(next.some(i=>i.id===item.id))return false;next.push(item)},()=>{
-  $('#register').close();selected=item.notice;month=date(item.notice);view='calendar';render();toast(`${item.name}を登録しました。`);
+  $('#register').close();render();toast(`${item.name}を登録しました。`);
  });
 }
 async function storeNativeFoodRegistration(item){
