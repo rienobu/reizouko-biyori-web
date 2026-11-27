@@ -1,6 +1,6 @@
 const scope=new URL(self.registration.scope);
 const prefix='fridge-biyori-web:'+scope.pathname+':';
-const CACHE=prefix+'v1';
+const CACHE=prefix+'v2';
 const FILES=['/','/index.html','/privacy.html','/support.html','/help.css','/style.css','/recipes.css','/mobile.css','/recipes.js','/recipe-library.js','/food-policy.js','/app.js','/pwa.js','/mobile-ui.js','/manifest.webmanifest','/icons/icon-192.png','/icons/icon-512.png','/icons/icon-maskable-512.png','/icons/apple-touch-icon.png'];
 const paths=new Map(FILES.map(path=>[new URL('.'+path,scope).pathname,path]));
 async function safeResponse(response,path){if(!response||!response.ok||response.redirected)return false;const type=response.headers.get('content-type')||'';if(path==='/'||path.endsWith('.html'))return type.includes('text/html')&&(await response.clone().text()).includes('name="application-name" content="冷蔵庫日和"');return !type.includes('text/html');}
